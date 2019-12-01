@@ -6,9 +6,6 @@ import Publication from '../Publication/Publication';
 import s from './Reader.module.css';
 
 export default class Reader extends Component {
-  static defaultProps = {
-    step: 1,
-  };
   static propTypes = {
     items: PropTypes.array.isRequired,
   };
@@ -18,24 +15,15 @@ export default class Reader extends Component {
   };
 
   handleIncrement = e => {
-    const { items } = this.props;
-    this.setState(state => {
-      if (state.step < items.length) {
-        return {
-          step: state.step + 1,
-        };
-      }
-    });
+    this.setState(state => ({
+      step: state.step + 1,
+    }));
   };
 
   handleDecrement = e => {
-    this.setState(state => {
-      if (state.step > 0) {
-        return {
-          step: state.step - 1,
-        };
-      }
-    });
+    this.setState(state => ({
+      step: state.step - 1,
+    }));
   };
 
   render() {
